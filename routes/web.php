@@ -1,11 +1,13 @@
 <?php
+Route::group(['prefix' => 'adminv1', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+    Route::get('/', \App\Livewire\Welcome::class);
+    Route::get('doctors', \App\Livewire\Admin\DoctorComponent::class);
+    Route::get('patients', \App\Livewire\Admin\PatientComponent::class);
+    Route::get('patient/{id}', \App\Livewire\Admin\PatientDetail::class)->name('patient.detail');
+    Route::get('documents', \App\Livewire\Admin\DocumentIndex::class)->name('documents');
+    Route::get('documents/create', \App\Livewire\Admin\DocumentCreate::class)->name('documents.create');
+});
 
-Route::get('/', \App\Livewire\Welcome::class);
-Route::get('doctors', \App\Livewire\Admin\DoctorComponent::class);
-Route::get('patients', \App\Livewire\Admin\PatientComponent::class);
-Route::get('patient/{id}', \App\Livewire\Admin\PatientDetail::class)->name('patient.detail');
-Route::get('documents', \App\Livewire\Admin\DocumentIndex::class)->name('documents');
-Route::get('documents/create', \App\Livewire\Admin\DocumentCreate::class)->name('documents.create');
 
 Route::get('/home', function () {
     if (session('status')) {
@@ -17,7 +19,7 @@ Route::get('/home', function () {
 
 Auth::routes(['register' => false]);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'adminv1', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 
     // Permissions
