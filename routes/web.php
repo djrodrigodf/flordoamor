@@ -1,5 +1,5 @@
 <?php
-Route::group(['prefix' => 'adminv1', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/', \App\Livewire\Welcome::class);
     Route::get('doctors', \App\Livewire\Admin\DoctorComponent::class);
     Route::get('patients', \App\Livewire\Admin\PatientComponent::class);
