@@ -1,6 +1,7 @@
 <?php
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
-    Route::get('/', \App\Livewire\Welcome::class);
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', \App\Livewire\Admin\PatientComponent::class)->name('admin2.home');
     Route::get('doctors', \App\Livewire\Admin\DoctorComponent::class);
     Route::get('patients', \App\Livewire\Admin\PatientComponent::class);
     Route::get('patient/{id}', \App\Livewire\Admin\PatientDetail::class)->name('patient.detail');
@@ -15,6 +16,12 @@ Route::get('/home', function () {
     }
 
     return redirect()->route('admin.home');
+});
+
+Route::get('logout', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    Session()->flush();
+    return redirect()->route('admin2.home');
 });
 
 Auth::routes(['register' => false]);
