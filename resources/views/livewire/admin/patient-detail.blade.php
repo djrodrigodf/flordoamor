@@ -48,7 +48,7 @@
     </div>
 
     <div class="grid grid-cols-1 gap-4 mt-4">
-        <x-card title="Historio / Observações">
+        <x-card title="Histórico / Observações">
             <div class="flex justify-end">
                 <x-button label="Novo" wire:click="$toggle('showDrawerHistory')" class="bg-green-900 btn-sm text-xs"></x-button>
             </div>
