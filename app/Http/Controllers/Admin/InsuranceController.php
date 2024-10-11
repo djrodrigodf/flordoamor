@@ -27,9 +27,9 @@ class InsuranceController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'insurance_show';
-                $editGate      = 'insurance_edit';
-                $deleteGate    = 'insurance_delete';
+                $viewGate = 'insurance_show';
+                $editGate = 'insurance_edit';
+                $deleteGate = 'insurance_delete';
                 $crudRoutePart = 'insurances';
 
                 return view('partials.datatablesActions', compact(

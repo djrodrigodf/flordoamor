@@ -30,9 +30,9 @@ class PatientController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'patient_show';
-                $editGate      = 'patient_edit';
-                $deleteGate    = 'patient_delete';
+                $viewGate = 'patient_show';
+                $editGate = 'patient_edit';
+                $deleteGate = 'patient_delete';
                 $crudRoutePart = 'patients';
 
                 return view('partials.datatablesActions', compact(
@@ -136,10 +136,10 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_create') && Gate::denies('patient_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Patient();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Patient;
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

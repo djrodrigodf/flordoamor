@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateEmergencyContactRequest;
 use App\Http\Resources\Admin\EmergencyContactResource;
 use App\Models\EmergencyContact;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class EmergencyContactApiController extends Controller

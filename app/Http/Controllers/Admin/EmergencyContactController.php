@@ -27,9 +27,9 @@ class EmergencyContactController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'emergency_contact_show';
-                $editGate      = 'emergency_contact_edit';
-                $deleteGate    = 'emergency_contact_delete';
+                $viewGate = 'emergency_contact_show';
+                $editGate = 'emergency_contact_edit';
+                $deleteGate = 'emergency_contact_delete';
                 $crudRoutePart = 'emergency-contacts';
 
                 return view('partials.datatablesActions', compact(

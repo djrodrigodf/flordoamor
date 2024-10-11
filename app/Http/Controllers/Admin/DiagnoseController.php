@@ -31,9 +31,9 @@ class DiagnoseController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'diagnosi_show';
-                $editGate      = 'diagnosi_edit';
-                $deleteGate    = 'diagnosi_delete';
+                $viewGate = 'diagnosi_show';
+                $editGate = 'diagnosi_edit';
+                $deleteGate = 'diagnosi_delete';
                 $crudRoutePart = 'diagnosis';
 
                 return view('partials.datatablesActions', compact(
@@ -133,10 +133,10 @@ class DiagnoseController extends Controller
     {
         abort_if(Gate::denies('diagnosi_create') && Gate::denies('diagnosi_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Diagnosi();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Diagnosi;
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

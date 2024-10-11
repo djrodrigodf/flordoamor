@@ -9,7 +9,6 @@ use App\Http\Requests\UpdatePrescriptionRequest;
 use App\Http\Resources\Admin\PrescriptionResource;
 use App\Models\Prescription;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class PrescriptionApiController extends Controller

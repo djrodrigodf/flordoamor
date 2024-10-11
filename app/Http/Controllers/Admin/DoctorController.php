@@ -26,9 +26,9 @@ class DoctorController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'doctor_show';
-                $editGate      = 'doctor_edit';
-                $deleteGate    = 'doctor_delete';
+                $viewGate = 'doctor_show';
+                $editGate = 'doctor_edit';
+                $deleteGate = 'doctor_delete';
                 $crudRoutePart = 'doctors';
 
                 return view('partials.datatablesActions', compact(

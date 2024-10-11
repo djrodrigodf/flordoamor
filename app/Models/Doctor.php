@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Doctor extends Model
 {
-    use SoftDeletes, Auditable, HasFactory;
+    use Auditable, HasFactory, SoftDeletes;
 
     public $table = 'doctors';
 
@@ -45,6 +45,24 @@ class Doctor extends Model
 
     public function doctorAppointments()
     {
-        return $this->hasMany(Appointment::class, 'doctor_id', 'id');
+        return $this->hasMany(Appointment::class, 'doctor_id', 'id')->whereNull('deleted_at');
+    }
+
+    public function setPhoneAttribute($value)
+    {
+        $this->attributes['phone'] = preg_replace('/\D/', '', $value);
+    }
+
+    public function getPhoneAttribute($value)
+    {
+        $value = preg_replace('/\D/', '', $value);
+        $length = strlen($value);
+        if ($length === 11) {
+            return preg_replace("/(\d{2})(\d{5})(\d{4})/", '($1) $2-$3', $value);
+        } elseif ($length === 10) {
+            return preg_replace("/(\d{2})(\d{4})(\d{4})/", '($1) $2-$3', $value);
+        } else {
+            return $value;
+        }
     }
 }

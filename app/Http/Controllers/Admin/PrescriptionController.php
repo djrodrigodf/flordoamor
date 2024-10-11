@@ -31,9 +31,9 @@ class PrescriptionController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'prescription_show';
-                $editGate      = 'prescription_edit';
-                $deleteGate    = 'prescription_delete';
+                $viewGate = 'prescription_show';
+                $editGate = 'prescription_edit';
+                $deleteGate = 'prescription_delete';
                 $crudRoutePart = 'prescriptions';
 
                 return view('partials.datatablesActions', compact(
@@ -133,10 +133,10 @@ class PrescriptionController extends Controller
     {
         abort_if(Gate::denies('prescription_create') && Gate::denies('prescription_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Prescription();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Prescription;
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

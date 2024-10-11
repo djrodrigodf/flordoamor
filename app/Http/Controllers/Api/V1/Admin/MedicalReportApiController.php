@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateMedicalReportRequest;
 use App\Http\Resources\Admin\MedicalReportResource;
 use App\Models\MedicalReport;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class MedicalReportApiController extends Controller
@@ -28,7 +27,7 @@ class MedicalReportApiController extends Controller
         $medicalReport = MedicalReport::create($request->all());
 
         foreach ($request->input('file', []) as $file) {
-            $medicalReport->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('file');
+            $medicalReport->addMedia(storage_path('tmp/uploads/'.basename($file)))->toMediaCollection('file');
         }
 
         return (new MedicalReportResource($medicalReport))
@@ -57,7 +56,7 @@ class MedicalReportApiController extends Controller
         $media = $medicalReport->file->pluck('file_name')->toArray();
         foreach ($request->input('file', []) as $file) {
             if (count($media) === 0 || ! in_array($file, $media)) {
-                $medicalReport->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('file');
+                $medicalReport->addMedia(storage_path('tmp/uploads/'.basename($file)))->toMediaCollection('file');
             }
         }
 

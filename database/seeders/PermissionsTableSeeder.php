@@ -11,295 +11,295 @@ class PermissionsTableSeeder extends Seeder
     {
         $permissions = [
             [
-                'id'    => 1,
+                'id' => 1,
                 'title' => 'user_management_access',
             ],
             [
-                'id'    => 2,
+                'id' => 2,
                 'title' => 'permission_create',
             ],
             [
-                'id'    => 3,
+                'id' => 3,
                 'title' => 'permission_edit',
             ],
             [
-                'id'    => 4,
+                'id' => 4,
                 'title' => 'permission_show',
             ],
             [
-                'id'    => 5,
+                'id' => 5,
                 'title' => 'permission_delete',
             ],
             [
-                'id'    => 6,
+                'id' => 6,
                 'title' => 'permission_access',
             ],
             [
-                'id'    => 7,
+                'id' => 7,
                 'title' => 'role_create',
             ],
             [
-                'id'    => 8,
+                'id' => 8,
                 'title' => 'role_edit',
             ],
             [
-                'id'    => 9,
+                'id' => 9,
                 'title' => 'role_show',
             ],
             [
-                'id'    => 10,
+                'id' => 10,
                 'title' => 'role_delete',
             ],
             [
-                'id'    => 11,
+                'id' => 11,
                 'title' => 'role_access',
             ],
             [
-                'id'    => 12,
+                'id' => 12,
                 'title' => 'user_create',
             ],
             [
-                'id'    => 13,
+                'id' => 13,
                 'title' => 'user_edit',
             ],
             [
-                'id'    => 14,
+                'id' => 14,
                 'title' => 'user_show',
             ],
             [
-                'id'    => 15,
+                'id' => 15,
                 'title' => 'user_delete',
             ],
             [
-                'id'    => 16,
+                'id' => 16,
                 'title' => 'user_access',
             ],
             [
-                'id'    => 17,
+                'id' => 17,
                 'title' => 'patient_create',
             ],
             [
-                'id'    => 18,
+                'id' => 18,
                 'title' => 'patient_edit',
             ],
             [
-                'id'    => 19,
+                'id' => 19,
                 'title' => 'patient_show',
             ],
             [
-                'id'    => 20,
+                'id' => 20,
                 'title' => 'patient_delete',
             ],
             [
-                'id'    => 21,
+                'id' => 21,
                 'title' => 'patient_access',
             ],
             [
-                'id'    => 22,
+                'id' => 22,
                 'title' => 'doctor_create',
             ],
             [
-                'id'    => 23,
+                'id' => 23,
                 'title' => 'doctor_edit',
             ],
             [
-                'id'    => 24,
+                'id' => 24,
                 'title' => 'doctor_show',
             ],
             [
-                'id'    => 25,
+                'id' => 25,
                 'title' => 'doctor_delete',
             ],
             [
-                'id'    => 26,
+                'id' => 26,
                 'title' => 'doctor_access',
             ],
             [
-                'id'    => 27,
+                'id' => 27,
                 'title' => 'appointment_create',
             ],
             [
-                'id'    => 28,
+                'id' => 28,
                 'title' => 'appointment_edit',
             ],
             [
-                'id'    => 29,
+                'id' => 29,
                 'title' => 'appointment_show',
             ],
             [
-                'id'    => 30,
+                'id' => 30,
                 'title' => 'appointment_delete',
             ],
             [
-                'id'    => 31,
+                'id' => 31,
                 'title' => 'appointment_access',
             ],
             [
-                'id'    => 32,
+                'id' => 32,
                 'title' => 'prescription_create',
             ],
             [
-                'id'    => 33,
+                'id' => 33,
                 'title' => 'prescription_edit',
             ],
             [
-                'id'    => 34,
+                'id' => 34,
                 'title' => 'prescription_show',
             ],
             [
-                'id'    => 35,
+                'id' => 35,
                 'title' => 'prescription_delete',
             ],
             [
-                'id'    => 36,
+                'id' => 36,
                 'title' => 'prescription_access',
             ],
             [
-                'id'    => 37,
+                'id' => 37,
                 'title' => 'document_create',
             ],
             [
-                'id'    => 38,
+                'id' => 38,
                 'title' => 'document_edit',
             ],
             [
-                'id'    => 39,
+                'id' => 39,
                 'title' => 'document_show',
             ],
             [
-                'id'    => 40,
+                'id' => 40,
                 'title' => 'document_delete',
             ],
             [
-                'id'    => 41,
+                'id' => 41,
                 'title' => 'document_access',
             ],
             [
-                'id'    => 42,
+                'id' => 42,
                 'title' => 'diagnosi_create',
             ],
             [
-                'id'    => 43,
+                'id' => 43,
                 'title' => 'diagnosi_edit',
             ],
             [
-                'id'    => 44,
+                'id' => 44,
                 'title' => 'diagnosi_show',
             ],
             [
-                'id'    => 45,
+                'id' => 45,
                 'title' => 'diagnosi_delete',
             ],
             [
-                'id'    => 46,
+                'id' => 46,
                 'title' => 'diagnosi_access',
             ],
             [
-                'id'    => 47,
+                'id' => 47,
                 'title' => 'treatment_create',
             ],
             [
-                'id'    => 48,
+                'id' => 48,
                 'title' => 'treatment_edit',
             ],
             [
-                'id'    => 49,
+                'id' => 49,
                 'title' => 'treatment_show',
             ],
             [
-                'id'    => 50,
+                'id' => 50,
                 'title' => 'treatment_delete',
             ],
             [
-                'id'    => 51,
+                'id' => 51,
                 'title' => 'treatment_access',
             ],
             [
-                'id'    => 52,
+                'id' => 52,
                 'title' => 'medical_report_create',
             ],
             [
-                'id'    => 53,
+                'id' => 53,
                 'title' => 'medical_report_edit',
             ],
             [
-                'id'    => 54,
+                'id' => 54,
                 'title' => 'medical_report_show',
             ],
             [
-                'id'    => 55,
+                'id' => 55,
                 'title' => 'medical_report_delete',
             ],
             [
-                'id'    => 56,
+                'id' => 56,
                 'title' => 'medical_report_access',
             ],
             [
-                'id'    => 57,
+                'id' => 57,
                 'title' => 'insurance_create',
             ],
             [
-                'id'    => 58,
+                'id' => 58,
                 'title' => 'insurance_edit',
             ],
             [
-                'id'    => 59,
+                'id' => 59,
                 'title' => 'insurance_show',
             ],
             [
-                'id'    => 60,
+                'id' => 60,
                 'title' => 'insurance_delete',
             ],
             [
-                'id'    => 61,
+                'id' => 61,
                 'title' => 'insurance_access',
             ],
             [
-                'id'    => 62,
+                'id' => 62,
                 'title' => 'emergency_contact_create',
             ],
             [
-                'id'    => 63,
+                'id' => 63,
                 'title' => 'emergency_contact_edit',
             ],
             [
-                'id'    => 64,
+                'id' => 64,
                 'title' => 'emergency_contact_show',
             ],
             [
-                'id'    => 65,
+                'id' => 65,
                 'title' => 'emergency_contact_delete',
             ],
             [
-                'id'    => 66,
+                'id' => 66,
                 'title' => 'emergency_contact_access',
             ],
             [
-                'id'    => 67,
+                'id' => 67,
                 'title' => 'audit_log_show',
             ],
             [
-                'id'    => 68,
+                'id' => 68,
                 'title' => 'audit_log_access',
             ],
             [
-                'id'    => 69,
+                'id' => 69,
                 'title' => 'user_alert_create',
             ],
             [
-                'id'    => 70,
+                'id' => 70,
                 'title' => 'user_alert_show',
             ],
             [
-                'id'    => 71,
+                'id' => 71,
                 'title' => 'user_alert_delete',
             ],
             [
-                'id'    => 72,
+                'id' => 72,
                 'title' => 'user_alert_access',
             ],
             [
-                'id'    => 73,
+                'id' => 73,
                 'title' => 'profile_password_edit',
             ],
         ];

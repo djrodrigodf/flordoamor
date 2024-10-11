@@ -15,7 +15,7 @@ class QaTopic extends Model
     ];
 
     protected $casts = [
-        'creator_id'  => 'integer',
+        'creator_id' => 'integer',
         'receiver_id' => 'integer',
     ];
 

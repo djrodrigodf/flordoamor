@@ -31,9 +31,9 @@ class DocumentController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'document_show';
-                $editGate      = 'document_edit';
-                $deleteGate    = 'document_delete';
+                $viewGate = 'document_show';
+                $editGate = 'document_edit';
+                $deleteGate = 'document_delete';
                 $crudRoutePart = 'documents';
 
                 return view('partials.datatablesActions', compact(
@@ -56,7 +56,7 @@ class DocumentController extends Controller
                 return $row->document_type ? Document::DOCUMENT_TYPE_SELECT[$row->document_type] : '';
             });
             $table->editColumn('file', function ($row) {
-                return $row->file ? '<a href="' . $row->file->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+                return $row->file ? '<a href="'.$row->file->getUrl().'" target="_blank">'.trans('global.downloadFile').'</a>' : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'patient', 'file']);
@@ -83,7 +83,7 @@ class DocumentController extends Controller
         $document = Document::create($request->all());
 
         if ($request->input('file', false)) {
-            $document->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
+            $document->addMedia(storage_path('tmp/uploads/'.basename($request->input('file'))))->toMediaCollection('file');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -113,7 +113,7 @@ class DocumentController extends Controller
                 if ($document->file) {
                     $document->file->delete();
                 }
-                $document->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
+                $document->addMedia(storage_path('tmp/uploads/'.basename($request->input('file'))))->toMediaCollection('file');
             }
         } elseif ($document->file) {
             $document->file->delete();
@@ -155,10 +155,10 @@ class DocumentController extends Controller
     {
         abort_if(Gate::denies('document_create') && Gate::denies('document_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Document();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Document;
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

@@ -31,9 +31,9 @@ class MedicalReportController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'medical_report_show';
-                $editGate      = 'medical_report_edit';
-                $deleteGate    = 'medical_report_delete';
+                $viewGate = 'medical_report_show';
+                $editGate = 'medical_report_edit';
+                $deleteGate = 'medical_report_delete';
                 $crudRoutePart = 'medical-reports';
 
                 return view('partials.datatablesActions', compact(
@@ -61,7 +61,7 @@ class MedicalReportController extends Controller
                 }
                 $links = [];
                 foreach ($row->file as $media) {
-                    $links[] = '<a href="' . $media->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>';
+                    $links[] = '<a href="'.$media->getUrl().'" target="_blank">'.trans('global.downloadFile').'</a>';
                 }
 
                 return implode(', ', $links);
@@ -91,7 +91,7 @@ class MedicalReportController extends Controller
         $medicalReport = MedicalReport::create($request->all());
 
         foreach ($request->input('file', []) as $file) {
-            $medicalReport->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('file');
+            $medicalReport->addMedia(storage_path('tmp/uploads/'.basename($file)))->toMediaCollection('file');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -126,7 +126,7 @@ class MedicalReportController extends Controller
         $media = $medicalReport->file->pluck('file_name')->toArray();
         foreach ($request->input('file', []) as $file) {
             if (count($media) === 0 || ! in_array($file, $media)) {
-                $medicalReport->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('file');
+                $medicalReport->addMedia(storage_path('tmp/uploads/'.basename($file)))->toMediaCollection('file');
             }
         }
 
@@ -166,10 +166,10 @@ class MedicalReportController extends Controller
     {
         abort_if(Gate::denies('medical_report_create') && Gate::denies('medical_report_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new MedicalReport();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new MedicalReport;
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

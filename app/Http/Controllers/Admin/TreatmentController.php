@@ -31,9 +31,9 @@ class TreatmentController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'treatment_show';
-                $editGate      = 'treatment_edit';
-                $deleteGate    = 'treatment_delete';
+                $viewGate = 'treatment_show';
+                $editGate = 'treatment_edit';
+                $deleteGate = 'treatment_delete';
                 $crudRoutePart = 'treatments';
 
                 return view('partials.datatablesActions', compact(
@@ -133,10 +133,10 @@ class TreatmentController extends Controller
     {
         abort_if(Gate::denies('treatment_create') && Gate::denies('treatment_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Treatment();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Treatment;
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Insurance;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Response;
 
 class UpdateInsuranceRequest extends FormRequest
 {
@@ -26,7 +24,7 @@ class UpdateInsuranceRequest extends FormRequest
                 'nullable',
             ],
             'valid_until' => [
-                'date_format:' . config('panel.date_format'),
+                'date_format:'.config('panel.date_format'),
                 'nullable',
             ],
         ];

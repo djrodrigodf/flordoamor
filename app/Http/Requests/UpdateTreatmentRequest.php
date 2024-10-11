@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Treatment;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Response;
 
 class UpdateTreatmentRequest extends FormRequest
 {
@@ -19,10 +17,10 @@ class UpdateTreatmentRequest extends FormRequest
         return [
             'start_date' => [
                 'required',
-                'date_format:' . config('panel.date_format'),
+                'date_format:'.config('panel.date_format'),
             ],
             'end_date' => [
-                'date_format:' . config('panel.date_format'),
+                'date_format:'.config('panel.date_format'),
                 'nullable',
             ],
         ];

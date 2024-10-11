@@ -9,7 +9,6 @@ use App\Models\QaTopic;
 use App\Models\User;
 use Auth;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class MessengerController extends Controller
 {
@@ -23,7 +22,7 @@ class MessengerController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        $title   = trans('global.all_messages');
+        $title = trans('global.all_messages');
         $unreads = $this->unreadTopics();
 
         return view('admin.messenger.index', compact('topics', 'title', 'unreads'));
@@ -42,14 +41,14 @@ class MessengerController extends Controller
     public function storeTopic(QaTopicCreateRequest $request)
     {
         $topic = QaTopic::create([
-            'subject'     => $request->input('subject'),
-            'creator_id'  => Auth::id(),
+            'subject' => $request->input('subject'),
+            'creator_id' => Auth::id(),
             'receiver_id' => $request->input('recipient'),
         ]);
 
         $topic->messages()->create([
             'sender_id' => Auth::id(),
-            'content'   => $request->input('content'),
+            'content' => $request->input('content'),
         ]);
 
         return redirect()->route('admin.messenger.index');
@@ -112,7 +111,7 @@ class MessengerController extends Controller
 
         $topic->messages()->create([
             'sender_id' => Auth::id(),
-            'content'   => $request->input('content'),
+            'content' => $request->input('content'),
         ]);
 
         return redirect()->route('admin.messenger.index');
@@ -144,7 +143,7 @@ class MessengerController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        $inboxUnreadCount  = 0;
+        $inboxUnreadCount = 0;
         $outboxUnreadCount = 0;
 
         foreach ($topics as $topic) {
@@ -163,7 +162,7 @@ class MessengerController extends Controller
         }
 
         return [
-            'inbox'  => $inboxUnreadCount,
+            'inbox' => $inboxUnreadCount,
             'outbox' => $outboxUnreadCount,
         ];
     }

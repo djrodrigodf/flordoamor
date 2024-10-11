@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 
 class SystemCalendarController extends Controller
 {
     public $sources = [
         [
-            'model'      => '\App\Models\Appointment',
+            'model' => '\App\Models\Appointment',
             'date_field' => 'appointment_date',
-            'field'      => 'appointment_date',
-            'prefix'     => 'appointment',
-            'suffix'     => 'patiente',
-            'route'      => 'admin.appointments.edit',
+            'field' => 'appointment_date',
+            'prefix' => 'appointment',
+            'suffix' => 'patiente',
+            'route' => 'admin.appointments.edit',
         ],
     ];
 
@@ -30,9 +29,9 @@ class SystemCalendarController extends Controller
                 }
 
                 $events[] = [
-                    'title' => trim($source['prefix'] . ' ' . $model->{$source['field']} . ' ' . $source['suffix']),
+                    'title' => trim($source['prefix'].' '.$model->{$source['field']}.' '.$source['suffix']),
                     'start' => $crudFieldValue,
-                    'url'   => route($source['route'], $model->id),
+                    'url' => route($source['route'], $model->id),
                 ];
             }
         }

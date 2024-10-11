@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateDoctorRequest;
 use App\Http\Resources\Admin\DoctorResource;
 use App\Models\Doctor;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class DoctorApiController extends Controller

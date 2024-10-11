@@ -11,7 +11,7 @@ trait MediaUploadingTrait
         // Validates file size
         if (request()->has('size')) {
             $this->validate(request(), [
-                'file' => 'max:' . request()->input('size') * 1024,
+                'file' => 'max:'.request()->input('size') * 1024,
             ]);
         }
         // If width or height is preset - we are validating it as an image
@@ -36,12 +36,12 @@ trait MediaUploadingTrait
 
         $file = $request->file('file');
 
-        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+        $name = uniqid().'_'.trim($file->getClientOriginalName());
 
         $file->move($path, $name);
 
         return response()->json([
-            'name'          => $name,
+            'name' => $name,
             'original_name' => $file->getClientOriginalName(),
         ]);
     }

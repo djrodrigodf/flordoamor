@@ -32,9 +32,9 @@ class AppointmentController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'appointment_show';
-                $editGate      = 'appointment_edit';
-                $deleteGate    = 'appointment_delete';
+                $viewGate = 'appointment_show';
+                $editGate = 'appointment_edit';
+                $deleteGate = 'appointment_delete';
                 $crudRoutePart = 'appointments';
 
                 return view('partials.datatablesActions', compact(
@@ -63,7 +63,7 @@ class AppointmentController extends Controller
         }
 
         $patients = Patient::get();
-        $doctors  = Doctor::get();
+        $doctors = Doctor::get();
 
         return view('admin.appointments.index', compact('patients', 'doctors'));
     }
@@ -143,10 +143,10 @@ class AppointmentController extends Controller
     {
         abort_if(Gate::denies('appointment_create') && Gate::denies('appointment_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Appointment();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Appointment;
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

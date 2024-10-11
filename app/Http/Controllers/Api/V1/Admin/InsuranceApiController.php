@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateInsuranceRequest;
 use App\Http\Resources\Admin\InsuranceResource;
 use App\Models\Insurance;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class InsuranceApiController extends Controller

@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Appointment;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Response;
 
 class UpdateAppointmentRequest extends FormRequest
 {
@@ -23,7 +21,7 @@ class UpdateAppointmentRequest extends FormRequest
             ],
             'appointment_date' => [
                 'required',
-                'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
+                'date_format:'.config('panel.date_format').' '.config('panel.time_format'),
             ],
             'doctor_id' => [
                 'required',

@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Patient;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Response;
 
 class UpdatePatientRequest extends FormRequest
 {
@@ -24,7 +22,7 @@ class UpdatePatientRequest extends FormRequest
             ],
             'email' => [
                 'required',
-                'unique:patients,email,' . request()->route('patient')->id,
+                'unique:patients,email,'.request()->route('patient')->id,
             ],
             'phone' => [
                 'string',
@@ -33,7 +31,7 @@ class UpdatePatientRequest extends FormRequest
                 'nullable',
             ],
             'birth_date' => [
-                'date_format:' . config('panel.date_format'),
+                'date_format:'.config('panel.date_format'),
                 'nullable',
             ],
             'rg' => [
@@ -43,7 +41,7 @@ class UpdatePatientRequest extends FormRequest
             'cpf' => [
                 'string',
                 'required',
-                'unique:patients,cpf,' . request()->route('patient')->id,
+                'unique:patients,cpf,'.request()->route('patient')->id,
             ],
             'address' => [
                 'string',

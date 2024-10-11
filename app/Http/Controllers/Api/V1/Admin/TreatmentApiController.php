@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateTreatmentRequest;
 use App\Http\Resources\Admin\TreatmentResource;
 use App\Models\Treatment;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class TreatmentApiController extends Controller

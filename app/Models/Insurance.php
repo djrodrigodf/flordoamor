@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Insurance extends Model
 {
-    use SoftDeletes, Auditable, HasFactory;
+    use Auditable, HasFactory, SoftDeletes;
 
     public $table = 'insurances';
 

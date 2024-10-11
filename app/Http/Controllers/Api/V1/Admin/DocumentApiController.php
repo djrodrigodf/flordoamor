@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\Resources\Admin\DocumentResource;
 use App\Models\Document;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class DocumentApiController extends Controller
@@ -28,7 +27,7 @@ class DocumentApiController extends Controller
         $document = Document::create($request->all());
 
         if ($request->input('file', false)) {
-            $document->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
+            $document->addMedia(storage_path('tmp/uploads/'.basename($request->input('file'))))->toMediaCollection('file');
         }
 
         return (new DocumentResource($document))
@@ -52,7 +51,7 @@ class DocumentApiController extends Controller
                 if ($document->file) {
                     $document->file->delete();
                 }
-                $document->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
+                $document->addMedia(storage_path('tmp/uploads/'.basename($request->input('file'))))->toMediaCollection('file');
             }
         } elseif ($document->file) {
             $document->file->delete();

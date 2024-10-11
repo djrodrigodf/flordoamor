@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateAppointmentRequest;
 use App\Http\Resources\Admin\AppointmentResource;
 use App\Models\Appointment;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppointmentApiController extends Controller

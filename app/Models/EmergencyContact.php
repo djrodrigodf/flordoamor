@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EmergencyContact extends Model
 {
-    use SoftDeletes, Auditable, HasFactory;
+    use Auditable, HasFactory, SoftDeletes;
 
     public $table = 'emergency_contacts';
 

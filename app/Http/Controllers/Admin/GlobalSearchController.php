@@ -9,8 +9,8 @@ use Illuminate\Support\Str;
 class GlobalSearchController extends Controller
 {
     private $models = [
-        'Patient'          => 'cruds.patient.title',
-        'Doctor'           => 'cruds.doctor.title',
+        'Patient' => 'cruds.patient.title',
+        'Doctor' => 'cruds.doctor.title',
         'EmergencyContact' => 'cruds.emergencyContact.title',
     ];
 
@@ -22,32 +22,32 @@ class GlobalSearchController extends Controller
             abort(400);
         }
 
-        $term           = $search['term'];
+        $term = $search['term'];
         $searchableData = [];
         foreach ($this->models as $model => $translation) {
-            $modelClass = 'App\Models\\' . $model;
-            $query      = $modelClass::query();
+            $modelClass = 'App\Models\\'.$model;
+            $query = $modelClass::query();
 
             $fields = $modelClass::$searchable;
 
             foreach ($fields as $field) {
-                $query->orWhere($field, 'LIKE', '%' . $term . '%');
+                $query->orWhere($field, 'LIKE', '%'.$term.'%');
             }
 
             $results = $query->take(10)
                 ->get();
 
             foreach ($results as $result) {
-                $parsedData           = $result->only($fields);
-                $parsedData['model']  = trans($translation);
+                $parsedData = $result->only($fields);
+                $parsedData['model'] = trans($translation);
                 $parsedData['fields'] = $fields;
-                $formattedFields      = [];
+                $formattedFields = [];
                 foreach ($fields as $field) {
                     $formattedFields[$field] = Str::title(str_replace('_', ' ', $field));
                 }
                 $parsedData['fields_formated'] = $formattedFields;
 
-                $parsedData['url'] = url('/admin/' . Str::plural(Str::snake($model, '-')) . '/' . $result->id . '/edit');
+                $parsedData['url'] = url('/'.Str::plural(Str::snake($model, '-')).'/'.$result->id);
 
                 $searchableData[] = $parsedData;
             }

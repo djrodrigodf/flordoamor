@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Patient;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Response;
 
 class StorePatientRequest extends FormRequest
 {
@@ -33,7 +31,7 @@ class StorePatientRequest extends FormRequest
                 'nullable',
             ],
             'birth_date' => [
-                'date_format:' . config('panel.date_format'),
+                'date_format:'.config('panel.date_format'),
                 'nullable',
             ],
             'rg' => [
