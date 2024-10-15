@@ -60,7 +60,7 @@
 
         {{-- The `$slot` goes here --}}
         <x-slot:content>
-
+            <x-theme-toggle class="btn btn-circle btn-ghost" />
             {{ $slot }}
         </x-slot:content>
     </x-main>

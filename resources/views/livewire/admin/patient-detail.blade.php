@@ -11,8 +11,8 @@
                 <x-slot:subtitle class="text-gray-500 flex flex-col gap-1 mt-2 pl-2">
                     <p><b>E-mail: </b>{{$patient->email}}</p>
                     <p><b>Telefone: </b>{{$patient->phone}}</p>
-                    <p><b>Aniversario: </b>{{\Carbon\Carbon::parse($patient->birth_date)->format('d/m/Y')}}</p>
-                    @if($patient->rg) <p><b>RG: </b>{{$patient->rg}}</p> @endif
+                    @if($patient->birth_date)<p><b>Aniversario: </b>{{\Carbon\Carbon::parse($patient->birth_date)->format('d/m/Y')}}</p>@endif
+                    @if($patient->rg) <p><b>RG: </b>{{$patient->rg}} @if($patient->ssp) - {{$patient->ssp}} @endif</p> @endif
                     <p><b>Cep: </b>{{$patient->postal_code}}</p>
                     <p><b>Endereço: </b>{{$patient->address}} {{$patient->number}} {{$patient->complement}}</p>
                     <p><b>Cidade: </b>{{$patient->city}} - {{$patient->state}}</p>
@@ -71,7 +71,10 @@
 
             <div class="scrollable-div mt-4">
                 @foreach($historys as $h)
-                    <x-timeline-item title="{{$h->title}}"
+
+                    <x-timeline-item-custom title="{{$h->title}}"
+                                            idData="{{$h->user_id}}"
+                                            btn="editHistory({{$h->id}})"
                                      subtitle="{{$h->user->name}} {{\Carbon\Carbon::parse($h->created_at)->format('d/m/Y H:i:s')}}"
                                      description="{{$h->description}}"/>
                 @endforeach

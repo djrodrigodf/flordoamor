@@ -29,6 +29,7 @@ class PatientDetail extends Component
 
     public $headerTable = [];
     public $newHistory = [];
+    public $boolEditHistory = false;
     public $fileType = [
         ['id' => 'laudoe', 'name' => 'Laudo'],
         ['id' => 'documento', 'name' => 'Documento'],
@@ -60,12 +61,22 @@ class PatientDetail extends Component
             'newHistory.description.required' => 'Descrição é Obrigatorio',
         ]);
 
-        History::create([
-            'title' => $this->newHistory['title'],
-            'description' => $this->newHistory['description'],
-            'user_id' => Auth::id(),
-            'patient_id' => $this->id,
-        ]);
+        if ($this->boolEditHistory) {
+            $update = History::find($this->newHistory['id']);
+            $update->title = $this->newHistory['title'];
+            $update->description = $this->newHistory['description'];
+            $update->save();
+            $this->boolEditHistory = false;
+        } else {
+            History::create([
+                'title' => $this->newHistory['title'],
+                'description' => $this->newHistory['description'],
+                'user_id' => Auth::id(),
+                'patient_id' => $this->id,
+            ]);
+        }
+
+
 
         $this->showDrawerHistory = false;
         $this->newHistory = [];
@@ -77,6 +88,14 @@ class PatientDetail extends Component
 
         $data = History::with('user')->where('patient_id', $this->id)->orderBy('id', 'desc')->get();
         return $data;
+    }
+
+    public function editHistory($id) {
+
+        $data = History::find($id);
+        $this->newHistory = $data->toArray();
+        $this->showDrawerHistory = true;
+        $this->boolEditHistory = true;
     }
 
     public function sendFile()

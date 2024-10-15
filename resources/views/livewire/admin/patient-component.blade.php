@@ -9,6 +9,9 @@
     </x-header>
 @if($drawerForm)
     <x-drawer wire:model="drawerForm" title="{{$isEditMode ? 'Editar Paciente' : 'Adicionar Paciente'}}" right separator with-close-button class="lg:w-1/3">
+
+
+
         <div>
             <x-input placeholder="Nome" wire:model.live="name"/>
             <x-input placeholder="E-mail" wire:model.live="email" class="mt-4"/>
@@ -19,13 +22,15 @@
                 <x-input placeholder="CPF"  wire:model.blur="cpf" class="mt-4" x-mask="999.999.999-99"/>
             @endif
 
-            <x-datetime placeholder="Data de Nascimento" wire:model.live="birth_date" class="mt-4"/>
+            <x-datetime label="Data de Nascimento" inline  placeholder="Data de Nascimento" wire:model.live="birth_date" class="mt-4"/>
             <x-input placeholder="RG" wire:model.live="rg" class="mt-4"/>
+            <x-input placeholder="Orgão Emissor" wire:model.live="ssp" class="mt-4"/>
             <x-input placeholder="CEP" wire:model.blur="postal_code" class="mt-4" x-mask="99999-999"/>
             <x-input placeholder="Endereço" wire:model.live="address" class="mt-4"/>
             <x-input placeholder="Número" wire:model.live="number" class="mt-4"/>
             <x-input placeholder="Complemento" wire:model.live="complement" class="mt-4"/>
-            <x-input placeholder="Bairro" readonly wire:model.live="neighborhood" class="mt-4"/>
+
+            <x-input-custom placeholder="Bairro" :onlyread="$blockBairro" wire:model.live="neighborhood" class="mt-4" />
             <x-input placeholder="Cidade" readonly wire:model.live="city" class="mt-4"/>
             <x-input placeholder="Estado" readonly wire:model.live="state" class="mt-4"/>
 

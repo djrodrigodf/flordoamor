@@ -22,6 +22,7 @@ class PatientComponent extends Component
     public $birth_date;
 
     public $rg;
+    public $ssp;
 
     public $cpf;
 
@@ -36,6 +37,7 @@ class PatientComponent extends Component
     public $city;
 
     public $state;
+    public bool $blockBairro = true;
 
     public $postal_code;
 
@@ -100,6 +102,7 @@ class PatientComponent extends Component
         $this->phone = '';
         $this->birth_date = '';
         $this->rg = '';
+        $this->ssp = '';
         $this->cpf = '';
         $this->address = '';
         $this->number = '';
@@ -123,8 +126,9 @@ class PatientComponent extends Component
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
-            'birth_date' => $this->birth_date,
+            'birth_date' => !empty($this->birth_date) ? $this->birth_date : null,
             'rg' => $this->rg,
+            'ssp' => $this->ssp,
             'cpf' => $this->cpf,
             'address' => $this->address,
             'number' => $this->number ? $this->number : 'S/N',
@@ -244,12 +248,16 @@ class PatientComponent extends Component
             if (isset($resp['erro'])) {
                 $this->error('Cep não encontrado');
                 $this->postal_code = null;
+                $this->blockBairro = true;
             } else {
-                $this->successMessage('Cep entrado com sucesso!');
+                $this->successMessage('Endereço localizado. Verifique os detalhes e preencha informações adicionais, se necessário!');
                 $this->address = $resp['logradouro'];
                 $this->neighborhood = $resp['bairro'];
                 $this->city = $resp['localidade'];
                 $this->state = $resp['uf'];
+                if ($this->neighborhood == null) {
+                    $this->blockBairro = false;
+                }
             }
         }
     }
@@ -258,7 +266,7 @@ class PatientComponent extends Component
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:patients,email',
             'phone' => 'required|min:14',
             'cpf' => ['required', 'formato_cpf', 'cpf'],
             'birth_date' => 'nullable',
