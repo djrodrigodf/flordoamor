@@ -27,7 +27,7 @@
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
             <x-card title="Plano de Saúde" shadow separator>
                 <div class="flex justify-end">
-                    <x-button label="Cadastrar" class="bg-green-900 btn-sm text-xs"></x-button>
+                    <x-button label="Cadastrar" class="btn-success btn-sm text-xs"></x-button>
                 </div>
                 <p><b>Nome:</b> UNIMED</p>
                 <p><b>Apólice:</b> 123</p>
@@ -35,7 +35,7 @@
             </x-card>
             <x-card title="Contato de Emergencia" shadow separator>
                 <div class="flex justify-end">
-                    <x-button label="{{$contact ? 'Editar' : 'Cadastrar'}}" wire:click="$toggle('showDrawerContact')" class="bg-green-900 btn-sm text-xs"></x-button>
+                    <x-button label="{{$contact ? 'Editar' : 'Cadastrar'}}" wire:click="$toggle('showDrawerContact')" class="btn-success btn-sm text-xs"></x-button>
                 </div>
                 @if($contact)
                 <p><b>Nome:</b> {{$contact['name']}}</p>
@@ -50,7 +50,7 @@
     <div class="grid grid-cols-1 gap-4 mt-4">
         <x-card title="Histórico / Observações">
             <div class="flex justify-end">
-                <x-button label="Novo" wire:click="$toggle('showDrawerHistory')" class="bg-green-900 btn-sm text-xs"></x-button>
+                <x-button label="Novo" wire:click="$toggle('showDrawerHistory')" class="btn-success btn-sm text-xs"></x-button>
             </div>
 
             <x-drawer wire:model="showDrawerHistory" class="w-11/12 lg:w-1/3" right>
@@ -95,7 +95,7 @@
                 </x-tab>
                 <x-tab name="documents-tab" label="Documentos">
                     <div class="flex justify-end">
-                        <x-button label="Novo" @click="$wire.myModal1 = true" class="bg-green-900 btn-sm text-xs"></x-button>
+                        <x-button label="Novo" @click="$wire.myModal1 = true" class="btn-success btn-sm text-xs"></x-button>
                     </div>
 
                     <x-modal wire:model="myModal1" class="backdrop-blur">

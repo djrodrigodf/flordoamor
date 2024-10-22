@@ -54,6 +54,13 @@
 
                 <x-menu-item title="Médicos" icon="fas.user.md" link="/doctors" />
                 <x-menu-item title="Pacientes" icon="fas.users" link="/patients" />
+                <x-menu-item title="Pedidos" icon="fas.shopping.cart" link="/invoice" />
+                <x-menu-item title="Esteira" icon="fas.poll" link="/kanban" />
+                <br>
+                <hr>
+                <br>
+                <x-menu-item title="Produtos" icon="fas.first.aid" link="/products" />
+
 
             </x-menu>
         </x-slot:sidebar>

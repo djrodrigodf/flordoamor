@@ -62,7 +62,7 @@ class TimelineItemCustom extends Component
                         <!-- TITLE -->
                         <div @class(["font-bold mb-1"])>{{ $title }}
                         @if($idData == \Auth::id())
-                        <x-button label="Editar" wire:click="{{$btn}}" class="bg-green-900 btn-sm text-xs"></x-button>
+                        <x-button label="Editar" wire:click="{{$btn}}" class="btn-success btn-sm text-xs"></x-button>
                         @endif
                         </div> <!-- Escapando o botão corretamente -->
 

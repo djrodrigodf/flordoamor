@@ -7,6 +7,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('patient/{id}', \App\Livewire\Admin\PatientDetail::class)->name('patient.detail');
     Route::get('documents', \App\Livewire\Admin\DocumentIndex::class)->name('documents');
     Route::get('documents/create', \App\Livewire\Admin\DocumentCreate::class)->name('documents.create');
+    Route::get('products', \App\Livewire\Admin\ProductList::class)->name('products.list');
+    Route::get('invoice', \App\Livewire\Admin\InvoiceList::class)->name('invoice.list');
+    Route::get('invoice/{id}', \App\Livewire\Admin\InvoiceDetail::class)->name('invoice.detail');
+    Route::get('kanban', \App\Livewire\Admin\KanbanComponent::class)->name('kanban');
 });
 
 
