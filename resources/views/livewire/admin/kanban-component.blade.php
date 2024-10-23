@@ -13,7 +13,7 @@
 
             <h2 class="text-lg font-bold mb-4 text-center min-w-[300px]">AGUARDANDO PAGAMENTO</h2>
             <div class="space-y-4">
-                @foreach($orders as $order)
+                @forelse($orders as $order)
                     @if($order['status'] === 'Aguardando Pagamento')
                         <div class="bg-base-100 p-4 rounded-lg shadow-md border  cursor-pointer indicator max-w-7xl w-full"
                              draggable="true"
@@ -36,7 +36,7 @@
 
                         </div>
                     @endif
-                @endforeach
+                @endforelse
             </div>
         </div>
 
@@ -47,7 +47,7 @@
         >
             <h2 class="text-lg font-bold mb-4 text-center min-w-[300px]">ENTRADA DE PEDIDO</h2>
             <div class="space-y-4">
-                @foreach($orders as $order)
+                @forelse($orders as $order)
                     @if($order['status'] === 'Entrada de Pedido')
                         <div class="bg-base-100 p-4 rounded-lg shadow-md border cursor-pointer"
                              draggable="true"
@@ -64,7 +64,7 @@
                             <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
                         </div>
                     @endif
-                @endforeach
+                @endforelse
             </div>
         </div>
 
@@ -74,7 +74,7 @@
              x-on:dragover.prevent>
             <h2 class="text-lg font-bold mb-4 text-center min-w-[300px]">PEDIDO EM PREPARAÇÃO</h2>
             <div class="space-y-4">
-                @foreach($orders as $order)
+                @forelse($orders as $order)
                     @if($order['status'] === 'Pedido em Preparacao')
                         <div class="bg-base-100 p-4 rounded-lg shadow-md border cursor-pointer"
                              draggable="true"
@@ -90,7 +90,7 @@
                             <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
                         </div>
                     @endif
-                @endforeach
+                @endforelse
             </div>
 
             <x-drawer wire:model="pedidoPreparacaoDrawer" title="Atualização de Status" class="w-11/12 lg:w-1/3">
@@ -191,14 +191,14 @@
                     </x-card>
                     <hr class="mt-4">
                     <x-card  class="bg-base-300 mt-4" title="Histórico">
-                        @foreach($historic as $h)
+                        @forelse($historic as $h)
 
                             <x-timeline-item
                                 title="{{$h['status'] ? strtoupper($h['status']) : ''}}"
                                 subtitle="{{$h['created_at'] ? \Carbon\Carbon::parse($h['created_at'])->format('d/m/Y H:i:s') : ''}}"
                                 description="{{$h['user']}}"
                             />
-                        @endforeach
+                        @endforelse
                     </x-card>
                     <div class="mt-4">
                         <x-button label="Cancel" @click="$wire.detailModal = false" />
@@ -216,7 +216,7 @@
              x-on:dragover.prevent>
             <h2 class="text-lg font-bold mb-4 text-center">PEDIDO PRONTO PARA ENTREGA</h2>
             <div class="space-y-4">
-                @foreach($orders as $order)
+                @forelse($orders as $order)
                     @if($order['status'] === 'Pedido pronto para Entrega')
                         <div class="bg-base-100 p-4 rounded-lg shadow-md border cursor-pointer"
                              draggable="true"
@@ -233,7 +233,7 @@
                             <p class="text-sm">Rastreio: {{ $order['shipping']['tracking_number'] }}</p>
                         </div>
                     @endif
-                @endforeach
+                @endforelse
             </div>
         </div>
 
@@ -243,7 +243,7 @@
              x-on:dragover.prevent>
             <h2 class="text-lg font-bold mb-4 text-center">PEDIDO ENTREGUE</h2>
             <div class="space-y-4">
-                @foreach($orders as $order)
+                @forelse($orders as $order)
                     @if($order['status'] === 'Pedido Entregue')
                         <div class="bg-base-100 p-4 rounded-lg shadow-md border cursor-pointer"
                              draggable="true"
@@ -260,7 +260,7 @@
                             <p class="text-sm">Rastreio: {{ $order['shipping']['tracking_number'] }}</p>
                         </div>
                     @endif
-                @endforeach
+                @endforelse
             </div>
         </div>
     </div>
