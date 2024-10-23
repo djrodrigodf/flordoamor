@@ -25,7 +25,7 @@
                         >
                             <div class="w-full">
                                 <p class="text-sm"><b>{{ $order['patient']['name'] }}</b></p>
-                                <p class="text-sm">Telefone: {{ $order['patient']['phone'] }}</p>
+                                <p class="text-sm">Telefone: {{ $order['patient']['phone'] ?? '' }}</p>
                                 <p class="text-sm">CPF: {{ $order['patient']['cpf'] }}</p>
                                 <p class="text-sm">Qtd Itens: {{ count($order['items']) }}</p>
                                 <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
@@ -59,7 +59,7 @@
                              wire:key="order-{{ $order['id'] }}"
                         >
                             <p class="text-sm"><b>{{ $order['patient']['name'] }}</b></p>
-                            <p class="text-sm">Telefone: {{ $order['patient']['phone'] }}</p>
+                            <p class="text-sm">Telefone: {{ $order['patient']['phone'] ?? '' }}</p>
                             <p class="text-sm">CPF: {{ $order['patient']['cpf'] }}</p>
                             <p class="text-sm">Qtd Itens: {{ count($order['items']) }}</p>
                             <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
@@ -86,7 +86,7 @@
                              x-on:mouseup="mouseUp({{ $order['id'] }})"
                              wire:key="order-{{ $order['id'] }}">
                             <p class="text-sm"><b>{{ $order['patient']['name'] }}</b></p>
-                            <p class="text-sm">Telefone: {{ $order['patient']['phone'] }}</p>
+                            <p class="text-sm">Telefone: {{ $order['patient']['phone'] ?? '' }}</p>
                             <p class="text-sm">CPF: {{ $order['patient']['cpf'] }}</p>
                             <p class="text-sm">Qtd Itens: {{ count($order['items']) }}</p>
                             <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
@@ -100,7 +100,7 @@
                 <div>Deseja mover o pedido para <b>{{$titleDrawer}}</b>?</div>
                 <x-card shadow class="bg-base-300 mt-4">
                     <p class="text-sm"><b>{{ $order['patient']['name'] }}</b></p>
-                    <p class="text-sm">Telefone: {{ $order['patient']['phone'] }}</p>
+                    <p class="text-sm">Telefone: {{ $order['patient']['phone'] ?? '' }}</p>
                     <p class="text-sm">CPF: {{ $order['patient']['cpf'] }}</p>
                     <p class="text-sm">Qtd Itens: {{ count($order['items']) }}</p>
                     <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
@@ -230,7 +230,7 @@
                              x-on:mouseup="mouseUp({{ $order['id'] }})"
                              wire:key="order-{{ $order['id'] }}">
                             <p class="text-sm"><b>{{ $order['patient']['name'] }}</b></p>
-                            <p class="text-sm">Telefone: {{ $order['patient']['phone'] }}</p>
+                            <p class="text-sm">Telefone: {{ $order['patient']['phone'] ?? '' }}</p>
                             <p class="text-sm">CPF: {{ $order['patient']['cpf'] }}</p>
                             <p class="text-sm">Qtd Itens: {{ count($order['items']) }}</p>
                             <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
@@ -258,7 +258,7 @@
                              x-on:mouseup="mouseUp({{ $order['id'] }})"
                              wire:key="order-{{ $order['id'] }}">
                             <p class="text-sm"><b>{{ $order['patient']['name'] }}</b></p>
-                            <p class="text-sm">Telefone: {{ $order['patient']['phone'] }}</p>
+                            <p class="text-sm">Telefone: {{ $order['patient']['phone'] ?? '' }}</p>
                             <p class="text-sm">CPF: {{ $order['patient']['cpf'] }}</p>
                             <p class="text-sm">Qtd Itens: {{ count($order['items']) }}</p>
                             <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
