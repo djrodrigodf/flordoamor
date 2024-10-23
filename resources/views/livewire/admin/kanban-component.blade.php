@@ -96,6 +96,7 @@
                 @endforelse
             </div>
 
+            @if(!empty($order))
             <x-drawer wire:model="pedidoPreparacaoDrawer" title="Atualização de Status" class="w-11/12 lg:w-1/3">
                 <div>Deseja mover o pedido para <b>{{$titleDrawer}}</b>?</div>
                 <x-card shadow class="bg-base-300 mt-4">
@@ -126,7 +127,7 @@
                     @endif
                 </div>
             </x-drawer>
-
+            @endif
             @if($selectKanban)
                 <x-modal title="{{$selectKanban->status}}" box-class="w-11/12 max-w-5xl" wire:model="detailModal" class="backdrop-blur">
                     <x-card class="bg-base-300" title="{{$selectKanban->patient->name}}">
