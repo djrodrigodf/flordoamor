@@ -36,6 +36,7 @@
 
                         </div>
                     @endif
+                @empty
                 @endforelse
             </div>
         </div>
@@ -64,6 +65,7 @@
                             <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
                         </div>
                     @endif
+                @empty
                 @endforelse
             </div>
         </div>
@@ -90,6 +92,7 @@
                             <p class="text-sm">Valor Total: {{ $order['items'] ? 'R$ ' . number_format($order['items']->sum('price'), 2, ',', '.') : 'R$ 0,00' }}</p>
                         </div>
                     @endif
+                @empty
                 @endforelse
             </div>
 
@@ -198,6 +201,7 @@
                                 subtitle="{{$h['created_at'] ? \Carbon\Carbon::parse($h['created_at'])->format('d/m/Y H:i:s') : ''}}"
                                 description="{{$h['user']}}"
                             />
+                        @empty
                         @endforelse
                     </x-card>
                     <div class="mt-4">
@@ -233,6 +237,7 @@
                             <p class="text-sm">Rastreio: {{ $order['shipping']['tracking_number'] }}</p>
                         </div>
                     @endif
+                @empty
                 @endforelse
             </div>
         </div>
@@ -260,6 +265,7 @@
                             <p class="text-sm">Rastreio: {{ $order['shipping']['tracking_number'] }}</p>
                         </div>
                     @endif
+                @empty
                 @endforelse
             </div>
         </div>
